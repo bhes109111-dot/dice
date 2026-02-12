@@ -1,0 +1,47 @@
+import random
+import time
+
+def roll_dice():
+    """模擬擲骰子，返回 1 到 6 的隨機整數"""
+    min_val = 1
+    max_val = 6
+    return random.randint(min_val, max_val)
+
+def play_game():
+    print("--- 歡迎來到「人機骰子大戰」 ---")
+    print("規則：你和電腦各擲一次，點數大者獲勝！\n")
+
+    while True:
+        user_input = input("按 Enter 鍵擲骰子 (或輸入 'q' 離開): ")
+        if user_input.lower() == 'q':
+            print("遊戲結束，謝謝遊玩！")
+            break
+
+        print("\n正在擲骰子...")
+        time.sleep(1) # 增加一點緊張感
+
+        # 玩家擲骰子
+        player_roll = roll_dice()
+        print(f"🎲 你擲出了: {player_roll}")
+
+        time.sleep(1)
+
+        # 電腦擲骰子
+        computer_roll = roll_dice()
+        print(f"🤖 電腦擲出了: {computer_roll}")
+
+        print("-" * 20)
+
+        # 判斷勝負
+        if player_roll > computer_roll:
+            print("🎉 恭喜！你贏了！")
+        elif player_roll < computer_roll:
+            print("💻 可惜，電腦贏了！")
+        else:
+            print("🤝 平手！再來一次吧！")
+        
+        print("=" * 30 + "\n")
+
+# 執行遊戲
+if __name__ == "__main__":
+    play_game()
